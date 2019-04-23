@@ -60,6 +60,8 @@ extension CAPSPageMenu {
                 configuration.centerMenuItems = value
             case let .hideTopMenuBar(value):
                 configuration.hideTopMenuBar = value
+            case let .isArabic(value):
+                configuration.isArabic = value
             }
         }
         
@@ -127,6 +129,11 @@ extension CAPSPageMenu {
         // Set background color behind scroll views and for menu scroll view
         self.view.backgroundColor = configuration.viewBackgroundColor
         menuScrollView.backgroundColor = configuration.scrollMenuBackgroundColor
+        
+        if configuration.isArabic {
+            menuScrollView.transform = CGAffineTransform(scaleX:-1,y: 1);
+            controllerScrollView.transform = CGAffineTransform(scaleX:-1,y: 1);
+        }
     }
     
     func configureUserInterface() {
@@ -208,7 +215,8 @@ extension CAPSPageMenu {
             }
             
             let menuItemView : MenuItemView = MenuItemView(frame: menuItemFrame)
-            menuItemView.configure(for: self, controller: controller, index: index)
+            //menuItemView.configure(for: self, controller: controller, index: index)
+            menuItemView.configure(for: self, controller: controller, index: index, isArabic: configuration.isArabic)
             
             // Add menu item view to menu scroll view
             menuScrollView.addSubview(menuItemView)

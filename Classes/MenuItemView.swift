@@ -38,7 +38,9 @@ class MenuItemView: UIView {
         }
     }
     
-    func configure(for pageMenu: CAPSPageMenu, controller: UIViewController, index: CGFloat) {
+    //func configure(for pageMenu: CAPSPageMenu, controller: UIViewController, index: CGFloat) {
+    func configure(for pageMenu: CAPSPageMenu, controller: UIViewController, index: CGFloat, isArabic: Bool) {
+        
         if pageMenu.configuration.useMenuLikeSegmentedControl {
             //**************************拡張*************************************
             if pageMenu.menuItemMargin > 0 {
@@ -68,6 +70,10 @@ class MenuItemView: UIView {
             self.titleLabel!.text = controller.title!
         } else {
             self.titleLabel!.text = "Menu \(Int(index) + 1)"
+        }
+        
+        if isArabic {
+            self.titleLabel!.transform = CGAffineTransform(scaleX:-1,y: 1);
         }
         
         // Add separator between menu items when using as segmented control
