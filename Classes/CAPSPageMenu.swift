@@ -83,10 +83,11 @@ open class CAPSPageMenu: UIViewController {
      */
     public init(viewControllers: [UIViewController], frame: CGRect, options: [String: AnyObject]?) {
         super.init(nibName: nil, bundle: nil)
-        
+        /*
         if configuration.isArabic {
             UIView.appearance().semanticContentAttribute = .forceRightToLeft
         }
+        */
         
         controllerArray = viewControllers
         
